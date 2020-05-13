@@ -3,4 +3,7 @@
     def index
     end
 
+    def boot
+    end
+
   end
