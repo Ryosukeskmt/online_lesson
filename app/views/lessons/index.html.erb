@@ -1,5 +1,4 @@
 <h1 class="center">レッスン一覧</h1>
-<div class="container">
   <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -12,38 +11,15 @@
         </tr>
       </thead>
       <tbody>
+        <% @lessons.each do |lesson| %>
           <tr>
-            <td>小学３年</td>
-            <td>算数</td>
-            <td>かけ算のきまりを復習しよう！</td>
-            <td>さとうたろう 先生</td>
-            <td>2020/01/02</td>
-            <td>2020/01/02</td>
+            <td><%= lesson.grade %></td>
+            <td><%= lesson.subject %></td>
+            <td><%= lesson.title %></td>
+            <td><%= lesson.teacher_name %> 先生</td>
+            <td><%= lesson.created_at.to_s(:datetime_jp) %></td>
+            <td><%= lesson.updated_at.to_s(:datetime_jp) %></td>
           </tr>
-          <tr>
-            <td>小学３年</td>
-            <td>英語</td>
-            <td>Hello World!!(教科書３ページ)</td>
-            <td>トムブラウン 先生</td>
-            <td>2020/01/02</td>
-            <td>2020/05/05</td>
-          </tr>
-          <tr>
-            <td>小学３年</td>
-            <td>理科</td>
-            <td>太陽とかげのまとめ</td>
-            <td>田中じろう 先生</td>
-            <td>2020/01/02</td>
-            <td>2020/05/05</td>
-          </tr>
-          <tr>
-            <td>小学３年</td>
-            <td>英語</td>
-            <td>Hello World!!(教科書３ページ)</td>
-            <td>さとうたろう 先生</td>
-            <td>2020/01/02</td>
-            <td>2020/05/05</td>
-          </tr>
+        <% end %>
       </tbody>
   </table>
-</div>
