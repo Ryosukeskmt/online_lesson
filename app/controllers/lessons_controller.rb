@@ -6,4 +6,7 @@
     def boot
     end
 
+    def mylesson
+    end
+
   end
