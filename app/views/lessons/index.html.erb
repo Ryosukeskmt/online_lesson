@@ -1,4 +1,7 @@
 <h1 class="center">レッスン一覧</h1>
+<div class="ml-auto create-lesson">
+  <%= link_to '新規作成', new_lesson_path, class: 'btn btn-outline-dark' %>
+</div>  
   <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -8,6 +11,7 @@
           <th>作成者</th>
           <th>作成日</th>
           <th>更新日</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +23,7 @@
             <td><%= lesson.teacher_name %> 先生</td>
             <td><%= lesson.created_at.to_s(:datetime_jp) %></td>
             <td><%= lesson.updated_at.to_s(:datetime_jp) %></td>
+            <td><%= link_to '勉強する', lesson, class: 'btn btn-primary' %></td>
           </tr>
         <% end %>
       </tbody>
