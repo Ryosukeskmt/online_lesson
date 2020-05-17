@@ -15,6 +15,20 @@
       Lesson.create(lesson_params)
     end
 
+    def show
+      @lesson = Lesson.find(params[:id])
+    end
+
+    def edit
+      @lesson = Lesson.find(params[:id])
+    end
+
+    def update
+      lesson = Lesson.find(params[:id])
+      lesson.update(lesson_params)
+      redirect_to lesson
+    end
+
     private
       def lesson_params
         params.require(:lesson).permit(:grade, :subject, :teacher_name, :title)

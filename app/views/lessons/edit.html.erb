@@ -1,0 +1,7 @@
+<div class="d-flex align-items-center">
+  <h1>レッスンを編集する</h1>
+  <div class="ml-auto">
+    <%= link_to 'マイレッスン', mylesson_path, class: 'btn btn-outline-dark' %>
+  </div>
+</div>
+<%= render partial: 'form', locals: {lesson: @lesson} %>
