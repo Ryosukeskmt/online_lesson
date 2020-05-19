@@ -1,7 +1,8 @@
   class LessonsController < ApplicationController
+    before_action :set_target_lesson, only: %i[show edit update destroy]
   
     def index
-      @lessons = Lesson.all
+      @lessons = Lesson.page(params[:page])
     end
 
     def mylesson
@@ -12,21 +13,24 @@
     end
 
     def create
-      Lesson.create(lesson_params)
+     lesson = Lesson.create(lesson_params)
+     redirect_to lesson
+    end
+
+    def destroy
+     @lesson.delete
+     redirect_to lessons_path
     end
 
     def show
-      @lesson = Lesson.find(params[:id])
     end
 
     def edit
-      @lesson = Lesson.find(params[:id])
     end
 
     def update
-      lesson = Lesson.find(params[:id])
-      lesson.update(lesson_params)
-      redirect_to lesson
+      @lesson.update(lesson_params)
+      redirect_to @lesson
     end
 
     private
@@ -34,5 +38,8 @@
         params.require(:lesson).permit(:grade, :subject, :teacher_name, :title)
       end
 
+      def set_target_lesson
+        @lesson = Lesson.find(params[:id])
+      end
 
   end
