@@ -2,6 +2,7 @@
   <h1>レッスンを編集する</h1>
   <div class="ml-auto">
     <%= link_to 'マイレッスン', mylesson_path, class: 'btn btn-outline-dark' %>
+    <%= link_to '削除', "/lessons/#{@lesson.id}", class: 'btn btn-outline-dark', method: :delete %>
   </div>
 </div>
 <%= render partial: 'form', locals: {lesson: @lesson} %>
