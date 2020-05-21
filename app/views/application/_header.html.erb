@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light" style="background-color:rgba(255,140,0 ,0.8)" >
-  <a class="navbar-brand logo-font wf-mplus1p" href="#">オンラインレッスン</a>
+  <%= link_to 'オンラインレッスン', lessons_path, class: 'navbar-brand logo-font wf-mplus1p' %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarsExample04">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="mylesson_path">マイレッスン</a>
+        <%= link_to 'マイレッスン', mylesson_path, class: 'nav-link' %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">レッスン一覧</a>
+        <%= link_to 'レッスン一覧', lessons_path, class: 'nav-link' %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">プロフィール</a>
