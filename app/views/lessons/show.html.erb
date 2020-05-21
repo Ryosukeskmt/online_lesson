@@ -1,6 +1,9 @@
-<%= link_to '編集', edit_lesson_path(@lesson), class: 'btn btn-outline-dark' %>
-<%= link_to '一覧', root_path, class: 'btn btn-outline-dark' %>
-<%= link_to 'マイレッスン', mylesson_path, class: 'btn btn-outline-dark' %>
+<% if flash[:notice] %>
+  <div class="alert alert-primary"><%= flash[:notice] %></div>
+<% end %>
+<div class="float-right link-layout">
+  <%= link_to '編集', edit_lesson_path(@lesson), class: 'btn btn-outline-dark' %>
+</div>
 <div class="video-size">
   <%= video_tag "/assets/sentaisho.mp4", :controls => true, :playsinline => true, style: "width:70%;" %>
 </div>

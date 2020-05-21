@@ -6,6 +6,7 @@
     end
 
     def mylesson
+      @lessons = Lesson.page(params[:page])
     end
 
     def new
@@ -14,12 +15,13 @@
 
     def create
      lesson = Lesson.create(lesson_params)
+     flash[:notice] = "「#{lesson.title}」を作成しました。"
      redirect_to lesson
     end
 
     def destroy
      @lesson.delete
-     redirect_to lessons_path
+     redirect_to lessons_path, flash: { notice: "「#{@lesson.title}」を削除しました。"} 
     end
 
     def show
