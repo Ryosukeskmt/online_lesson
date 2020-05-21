@@ -31,6 +31,7 @@ gem 'jquery-rails'
 gem 'mini_racer'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+gem 'carrierwave'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

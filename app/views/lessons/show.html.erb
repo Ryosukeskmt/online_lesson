@@ -5,11 +5,19 @@
   <%= link_to '編集', edit_lesson_path(@lesson), class: 'btn btn-outline-dark' %>
 </div>
 <div class="video-size">
-  <%= video_tag "/assets/sentaisho.mp4", :controls => true, :playsinline => true, style: "width:70%;" %>
+  <%= video_tag @lesson.movie.url, :controls => true, :playsinline => true, style: "width:75%;" if @lesson.movie? %>
+  <%# <%= video_tag "/assets/sentaisho.mp4", :controls => true, :playsinline => true, style: "width:75%;" %>
 </div>
 <h4><%= @lesson.title %></h4>
-<%= @lesson.teacher_name %> 先生
-<%= @lesson.grade %>
-<%= @lesson.subject %>
-<%= @lesson.created_at.to_s(:datetime_jp) %>
-<%= @lesson.updated_at.to_s(:datetime_jp) %>
+<div>
+  <%= @lesson.grade %>
+  <%= @lesson.subject %> |
+  <%= @lesson.teacher_name %> 先生
+  <div class="small text-muted ">
+    作成日：<%= @lesson.created_at.to_s(:datetime_jp) %>
+    更新日：<%= @lesson.updated_at.to_s(:datetime_jp) %>
+  </div>
+</div>
+<hr class="cp_hr02" />
+<%= simple_format(@lesson.explanation) %>
+<hr class="cp_hr02" />

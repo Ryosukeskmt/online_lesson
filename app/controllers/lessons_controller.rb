@@ -37,7 +37,7 @@
 
     private
       def lesson_params
-        params.require(:lesson).permit(:grade, :subject, :teacher_name, :title)
+        params.require(:lesson).permit(:grade, :subject, :teacher_name, :title, :explanation, :movie)
       end
 
       def set_target_lesson
