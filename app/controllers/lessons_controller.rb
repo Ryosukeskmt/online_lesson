@@ -15,8 +15,15 @@
 
     def create
      lesson = Lesson.create(lesson_params)
-     flash[:notice] = "「#{lesson.title}」を作成しました。"
-     redirect_to lesson
+     if lesson.save
+      flash[:notice] = "「#{lesson.title}」を作成しました。"
+      redirect_to lesson
+     else
+      redirect_to new_lesson_path, flash: {
+        lesson: lesson,
+        error_messages: lesson.errors.full_messages
+      }
+     end
     end
 
     def destroy

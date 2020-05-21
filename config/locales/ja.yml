@@ -1,4 +1,12 @@
 ja:
+  activerecord:
+    attributes:
+      lesson:
+        movie: 動画
+        teacher_name: 名前
+        title: タイトル
+        grade: 学年
+        subject: 教科
   views:
     pagination:
       first: '最初'
@@ -6,3 +14,4 @@ ja:
       previous: '前'
       next: '次'
       truncate: '...'
+    
