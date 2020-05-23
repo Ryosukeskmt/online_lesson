@@ -1,6 +1,7 @@
 <% if flash[:notice] %>
   <div class="alert alert-primary"><%= flash[:notice] %></div>
 <% end %>
+<%= render 'shared/error_messages' %>
 <div class="float-right link-layout">
   <%= link_to '編集', edit_lesson_path(@lesson), class: 'btn btn-outline-dark' %>
 </div>
@@ -21,3 +22,8 @@
 <hr class="cp_hr02" />
 <%= simple_format(@lesson.explanation) %>
 <hr class="cp_hr02" />
+<div class="p-comment__list">
+  <div class="p-comment_listTitle">コメント</div>
+  <%= render @lesson.comments %> 
+</div>
+<%= render partial: 'comments/form', locals: { comment: @comment } %>

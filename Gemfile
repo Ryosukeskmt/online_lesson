@@ -34,6 +34,7 @@ gem 'bootstrap4-kaminari-views'
 gem 'carrierwave'
 gem 'rails-i18n'
 
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -56,6 +57,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-byebug'
+  gem 'annotate'
 end
 
 group :test do
