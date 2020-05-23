@@ -32,14 +32,22 @@
     end
 
     def show
+      @comment = Comment.new(lesson_id: @lesson.id)
     end
 
     def edit
+      @lesson.attributes = flash[:lesson] if flash[:lesson]
     end
 
     def update
-      @lesson.update(lesson_params)
-      redirect_to @lesson
+      if @lesson.update(lesson_params)
+        flash[:notice] = "「#{@lesson.title}」を更新しました。"
+        redirect_to @lesson
+      else
+        flash[:lesson] = @lesson
+        flash[:error_messages] = @lesson.errors.full_messages
+        redirect_back fallback_location: @lesson
+      end
     end
 
     private

@@ -7,6 +7,9 @@ ja:
         title: タイトル
         grade: 学年
         subject: 教科
+      comment:
+        name: 名前
+        comment: コメント
   views:
     pagination:
       first: '最初'
