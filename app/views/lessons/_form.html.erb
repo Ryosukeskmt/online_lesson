@@ -2,27 +2,27 @@
 
 <%= form_with model: lesson do |f| %>
   <div class="form-group">
-    <%= f.label :grade, '学年'%>
-    <%= f.text_field :grade, class: 'form-control' %>
+    <label>学年：</label>
+    <%= f.select :grade, [["小学1年", "小学1年"], ["小学2年", "小学2年"], ["小学3年", "小学3年"], ["小学4年", "小学4年"], ["小学5年", "小学5年"], ["小学6年", "小学6年"], ["中学1年", "中学1年"], ["中学2年", "中学2年"], ["中学3年", "中学3年"]], include_blank: "選択して下さい" %>
   </div>
   <div class="form-group">
-    <%= f.label :subject, '教科'%>
-    <%= f.text_field :subject, class: 'form-control' %>
+    <label>教科：</label>
+    <%= f.select :subject, [["国語", "国語"], ["算数・数学", "算数・数学"], ["理科", "理科"], ["社会", "社会"], ["英語", "英語"]], include_blank: "選択して下さい" %>
   </div>
   <div class="form-group">
-    <%= f.label :title, 'タイトル'%>
+    <%= f.label :title, 'タイトル：'%>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :movie, '動画をアップロード'%><br>
+    <%= f.label :movie, '動画をアップロード：'%><br>
     <%= f.file_field :movie, class: "movie" %>
   </div>
   <div class="form-group">
-    <%= f.label :teacher_name, '名前'%>
+    <%= f.label :teacher_name, '名前：'%>
     <%= f.text_field :teacher_name, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :explanation, 'レッスンの説明'%>
+    <%= f.label :explanation, 'レッスンの説明：'%>
     <%= f.text_area :explanation, size: "20x5", class: 'form-control' %>
   </div>
   <%= f.submit '保存', class: 'btn btn-primary' %>
