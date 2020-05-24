@@ -2,6 +2,7 @@
     before_action :set_target_lesson, only: %i[show edit update destroy]
   
     def index
+      @lessons = params[:subject].present? ? Lesson.find(params[:subject]) : Lesson.all
       @lessons = Lesson.page(params[:page])
     end
 
