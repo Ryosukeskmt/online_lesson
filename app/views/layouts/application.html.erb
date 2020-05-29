@@ -16,6 +16,12 @@
       <%= render "header" %>
     <% end %>
     <div class="container">
+      <% if flash[:notice] %>
+        <div class="alert alert-info"><%= flash[:notice] %></div>
+      <% end %>
+      <% if flash[:error_messages] %>
+        <div class="alert alert-danger"><%= flash[:error_messages] %></div>
+      <% end %>
       <%= yield %>
     </div>
   </body>

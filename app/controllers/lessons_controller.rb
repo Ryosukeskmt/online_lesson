@@ -1,5 +1,6 @@
   class LessonsController < ApplicationController
     before_action :set_target_lesson, only: %i[show edit update destroy]
+    before_action :sign_in_required
   
     def index
       @lessons = params[:subject].present? ? Lesson.find(params[:subject]) : Lesson.all
