@@ -10,15 +10,6 @@ ja:
         other: "%{count} 個のエラーにより、この %{resource} を保存できません："
 
   devise:
-    failure:
-      already_authenticated: 'ログイン済みです'
-      unauthenticated: 'ログインまたは登録が必要です'
-      unconfirmed: '本登録を行ってください'
-      locked: 'アカウントはロックされています'
-      invalid: 'メールアドレスまたはパスワードが違います'
-      invalid_token: '認証キーが不正です'
-      timeout: '一定時間が経過したため、再度ログインが必要です'
-      inactive: 'アカウントがまだ有効になっていません'
     sessions:
       signed_in: 'ログインしました'
       signed_out: 'ログアウトしました'
@@ -48,6 +39,15 @@ ja:
     omniauth_callbacks:
       success: '%{kind} から承認されました。'
       failure: '%{kind} から承認されませんでした。理由："%{reason}".'
+    failure:
+      already_authenticated: 'ログイン済みです'
+      unauthenticated: 'ログインまたは登録が必要です'
+      unconfirmed: '本登録を行ってください'
+      locked: 'アカウントはロックされています'
+      invalid: 'メールアドレスまたはパスワードが違います'
+      invalid_token: '認証キーが不正です'
+      timeout: '一定時間が経過したため、再度ログインが必要です'
+      inactive: 'アカウントがまだ有効になっていません'
     mailer:
       confirmation_instructions:
         subject: 'アカウントの登録方法'
