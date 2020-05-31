@@ -27,6 +27,11 @@
       <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "new-password" %>
     </div>
 
+    <div class="field">
+        <%= f.check_box :teacher, {}, true, false %>
+        <%= f.label :"先生として登録する" %>
+    </div>
+
     <div class="actions text-center link-margin">
       <%= f.submit "登録", class:"w-50 btn btn-primary" %>
     </div>
