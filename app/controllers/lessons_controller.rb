@@ -8,7 +8,8 @@
     end
 
     def mylesson
-      @lessons = Lesson.page(params[:page])
+      @lessons = current_user.lessons
+      @mylesson_lessons = current_user.mylesson_lessons
     end
 
     def new

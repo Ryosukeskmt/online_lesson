@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_124423) do
+ActiveRecord::Schema.define(version: 2020_06_01_222505) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "lesson_id"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 2020_05_30_124423) do
     t.datetime "updated_at", null: false
     t.text "explanation"
     t.string "movie"
+  end
+
+  create_table "mylessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_mylessons_on_lesson_id"
+    t.index ["user_id", "lesson_id"], name: "index_mylessons_on_user_id_and_lesson_id", unique: true
+    t.index ["user_id"], name: "index_mylessons_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -62,4 +72,6 @@ ActiveRecord::Schema.define(version: 2020_05_30_124423) do
   end
 
   add_foreign_key "comments", "lessons"
+  add_foreign_key "mylessons", "lessons"
+  add_foreign_key "mylessons", "users"
 end
