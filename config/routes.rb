@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'mylessons/create'
+  get 'mylessons/destroy'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'   
@@ -14,6 +16,9 @@ Rails.application.routes.draw do
   get 'comments/destroy'
   get "mylesson" => "lessons#mylesson"
   root 'lessons#index'
-  resources :lessons
+  #resources :lessons
   resources :comments, only: [:create,:destroy]
+  resources :lessons do
+    resource :mylessons, only: %i[create destroy]
+  end
 end
