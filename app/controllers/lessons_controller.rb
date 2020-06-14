@@ -1,10 +1,18 @@
   class LessonsController < ApplicationController
     before_action :set_target_lesson, only: %i[show edit update destroy]
     before_action :authenticate_user!
-  
+
     def index
       @lessons = params[:subject].present? ? Lesson.find(params[:subject]) : Lesson.all
       @lessons = Lesson.page(params[:page])
+    end
+
+    def search
+      if params[:q].present?
+        @lessons = Lesson.where('grade LIKE ? OR teacher_name LIKE ? OR title LIKE ? OR subject LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+      else
+        @lessons = Lesson.none
+      end
     end
 
     def mylesson
@@ -18,6 +26,7 @@
 
     def create
      lesson = Lesson.create(lesson_params)
+     lesson.user_id = current_user.id
      if lesson.save
       flash[:notice] = "「#{lesson.title}」を作成しました。"
       redirect_to lesson

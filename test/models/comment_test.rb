@@ -8,6 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  lesson_id  :bigint
+#  user_id    :string(255)
 #
 # Foreign Keys
 #
