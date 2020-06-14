@@ -16,9 +16,9 @@ Rails.application.routes.draw do
   get 'comments/destroy'
   get "mylesson" => "lessons#mylesson"
   root 'lessons#index'
-  #resources :lessons
   resources :comments, only: [:create,:destroy]
   resources :lessons do
     resource :mylessons, only: %i[create destroy]
+    get :search, on: :collection
   end
 end

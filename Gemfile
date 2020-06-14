@@ -34,6 +34,7 @@ gem 'bootstrap4-kaminari-views'
 gem 'carrierwave'
 gem 'rails-i18n'
 gem 'devise'
+gem 'ransack'
 
 
 # Use ActiveStorage variant

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_222505) do
+ActiveRecord::Schema.define(version: 2020_06_08_123939) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "lesson_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_06_01_222505) do
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_id"
     t.index ["lesson_id"], name: "index_comments_on_lesson_id"
   end
 
@@ -30,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_06_01_222505) do
     t.datetime "updated_at", null: false
     t.text "explanation"
     t.string "movie"
+    t.string "status"
+    t.string "user_id"
   end
 
   create_table "mylessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

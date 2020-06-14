@@ -19,8 +19,8 @@
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %> 
       </li>
     </ul>
-    <form class="form-inline my-2 my-md-0">
-      <input class="form-control" type="text" placeholder="レッスンをさがす">
-    </form>
+    <%= form_with url: search_lessons_path, class:"form-inline my-2 my-md-0", method: :get, local: true do |f| %>
+      <%= f.text_field :q, class:"form-control", placeholder: "レッスンをさがす"%>
+    <% end %>
   </div>
 </nav>
