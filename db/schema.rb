@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_123939) do
+ActiveRecord::Schema.define(version: 2020_06_15_222343) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "lesson_id"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 2020_06_08_123939) do
     t.datetime "updated_at", null: false
     t.string "user_id"
     t.index ["lesson_id"], name: "index_comments_on_lesson_id"
+  end
+
+  create_table "impressions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "understanding"
+    t.index ["lesson_id"], name: "index_impressions_on_lesson_id"
+    t.index ["user_id", "lesson_id"], name: "index_impressions_on_user_id_and_lesson_id", unique: true
+    t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
   create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -75,6 +86,8 @@ ActiveRecord::Schema.define(version: 2020_06_08_123939) do
   end
 
   add_foreign_key "comments", "lessons"
+  add_foreign_key "impressions", "lessons"
+  add_foreign_key "impressions", "users"
   add_foreign_key "mylessons", "lessons"
   add_foreign_key "mylessons", "users"
 end

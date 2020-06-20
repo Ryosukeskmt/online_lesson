@@ -24,6 +24,7 @@
     <%= link_to "マイレッスンに登録", lesson_mylessons_path(@lesson.id), method: :post %>
   <% end %>
 </div>
+
 <hr class="cp_hr02" />
 <%= simple_format(@lesson.explanation) %>
 <hr class="cp_hr02" />
@@ -32,3 +33,4 @@
   <%= render @lesson.comments %> 
 </div>
 <%= render partial: 'comments/form', locals: { comment: @comment } %>
+
