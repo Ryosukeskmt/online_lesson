@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'   
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create,:destroy]
   resources :lessons do
     resource :mylessons, only: %i[create destroy]
+    resource :logs, only: %i[create destroy]
     get :search, on: :collection
   end
 end

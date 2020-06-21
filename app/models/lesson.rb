@@ -18,15 +18,15 @@ class Lesson < ApplicationRecord
   has_many :comments
   belongs_to :user
   has_many :mylessons, dependent: :destroy
-  has_many :impressions, dependent: :destroy
+  has_many :logs, dependent: :destroy
   
   # マイレッスンに追加してあるか判定 → view側で呼び出し
   def mylesson_by?(user)
     mylessons.where(user_id: user.id).exists?
   end
 
-  def impression_by?(user)
-    impressions.where(user_id: user.id).exists?
+  def logged_by?(user)
+    logs.where(user_id: user.id).exists?
   end
 
   mount_uploader :movie, MovieUploader

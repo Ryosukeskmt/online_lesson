@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_222343) do
+ActiveRecord::Schema.define(version: 2020_06_21_005117) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "lesson_id"
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 2020_06_15_222343) do
     t.string "movie"
     t.string "status"
     t.string "user_id"
+  end
+
+  create_table "logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "mylessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
