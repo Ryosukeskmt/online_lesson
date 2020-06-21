@@ -29,9 +29,8 @@
 class User < ApplicationRecord
   has_many :lessons, dependent: :destroy
   has_many :mylessons, dependent: :destroy
-  has_many :impressions, dependent: :destroy
+  has_many :logs, dependent: :destroy
   has_many :mylesson_lessons, through: :mylessons, source: :lesson
-  has_many :impression_lessons, through: :impressions, source: :lesson
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

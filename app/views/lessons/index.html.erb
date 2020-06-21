@@ -14,6 +14,7 @@
         <th>作成者</th>
         <th>作成日</th>
         <th>更新日</th>
+        <th>履歴</th>
         <th></th>
       </tr>
     </thead>
@@ -26,6 +27,13 @@
           <td><%= lesson.teacher_name %> 先生</td>
           <td><%= lesson.created_at.to_s(:datetime_jp) %></td>
           <td><%= lesson.updated_at.to_s(:datetime_jp) %></td>
+          <td>
+            <% if lesson.logged_by?(current_user) %>
+            学習済み
+            <% else %>
+            未学習
+            <% end %>
+          </td>
           <td><%= link_to '勉強する', lesson, class: 'btn btn-primary' %></td>
         </tr>
       <% end %>

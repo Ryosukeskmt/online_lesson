@@ -17,12 +17,23 @@
     更新日：<%= @lesson.updated_at.to_s(:datetime_jp) %>
   </div>
 </div>
-<div>
-  <% if @lesson.mylesson_by?(current_user) %> 
-    <%= link_to "マイレッスンから解除", lesson_mylessons_path(@lesson.id), method: :delete %>
-  <% else %>
-    <%= link_to "マイレッスンに登録", lesson_mylessons_path(@lesson.id), method: :post %>
-  <% end %>
+
+<div class="mylesson-log">
+  <div class="mylesson">
+    <% if @lesson.mylesson_by?(current_user) %> 
+      <%= link_to "マイレッスンに登録済み", lesson_mylessons_path(@lesson.id), class: "btn btn-success", method: :delete %>
+    <% else %>
+      <%= link_to "マイレッスンに登録する", lesson_mylessons_path(@lesson.id), class: "btn btn-info", method: :post %>
+    <% end %>
+  </div>
+
+  <div>
+    <% if @lesson.logged_by?(current_user) %> 
+      <%= link_to "学習済み", lesson_logs_path(@lesson.id), class: "btn btn-success", method: :delete %>
+    <% else %>
+      <%= link_to "学習したらクリック", lesson_logs_path(@lesson.id), class: "btn btn-info", method: :post %>
+    <% end %>
+  </div>
 </div>
 
 <hr class="cp_hr02" />
