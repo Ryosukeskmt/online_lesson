@@ -1,0 +1,14 @@
+<h1 class="center"><%=current_user.name %>さんのユーザーページ</h1>
+
+<div class="float-right">
+  <%= link_to 'ユーザー情報を編集', edit_user_registration_path(current_user.id), class: 'btn btn-primary' %>
+</div>
+
+<div class="lesson-count">
+  <h2>学習したレッスン数</h2>
+  <p class="number"><%= Log.where(user_id: current_user.id).count %></p>
+</div>
+<div class="lesson-count">
+  <h2>マイレッスンに登録したレッスン数</h2>
+  <p  class="number"><%= Mylesson.where(user_id: current_user.id).count %></p>
+</div>
