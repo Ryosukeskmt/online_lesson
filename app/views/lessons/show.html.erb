@@ -1,9 +1,5 @@
 <%= render 'shared/error_messages' %>
-<% if current_user.teacher? %>
-  <div class="float-right link-layout">
-    <%= link_to '編集', edit_lesson_path(@lesson), class: 'btn btn-outline-dark' %>
-  </div>
-<% end %>
+
 <div class="video-size">
   <%= video_tag @lesson.movie.url, :controls => true, :playsinline => true, style: "width:75%;" if @lesson.movie? %>
 </div>

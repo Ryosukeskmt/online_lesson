@@ -1,14 +1,51 @@
-<h1 class="center"><%=current_user.name %>さんのユーザーページ</h1>
+<% if current_user.teacher? %>
+  <h1 class="center"><%=current_user.name %> 先生のユーザーページ</h1>
 
-<div class="float-right">
-  <%= link_to 'ユーザー情報を編集', edit_user_registration_path(current_user.id), class: 'btn btn-primary' %>
-</div>
+  <div class="text-right link-layout">
+    <%= link_to 'ユーザー情報を編集', edit_user_registration_path(current_user.id), class: 'btn btn-primary' %>
+  </div>
 
-<div class="lesson-count">
-  <h2>学習したレッスン数</h2>
-  <p class="number"><%= Log.where(user_id: current_user.id).count %></p>
-</div>
-<div class="lesson-count">
-  <h2>マイレッスンに登録したレッスン数</h2>
-  <p  class="number"><%= Mylesson.where(user_id: current_user.id).count %></p>
-</div>
+  <table class="table table-striped table-bordered">
+  <thead>
+      <tr>
+        <th>学年</th>
+        <th>教科</th>
+        <th>タイトル</th>
+        <th>作成者</th>
+        <th>作成日</th>
+        <th>更新日</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_user.posts.each do |lesson| %>
+        <tr>
+          <td><%= lesson.grade %></td>
+          <td><%= lesson.subject %></td>
+          <td><%= lesson.title %></td>
+          <td><%= lesson.teacher_name %> 先生</td>
+          <td><%= lesson.created_at.to_s(:datetime_jp) %></td>
+          <td><%= lesson.updated_at.to_s(:datetime_jp) %></td>
+          <td><%= link_to '確認する', lesson, class: 'btn btn-primary' %></td>
+          <td><%= link_to '編集する', edit_lesson_path(lesson), class: 'btn btn-primary' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+<% else %>
+  <h1 class="center"><%=current_user.name %> さんのユーザーページ</h1>
+
+  <div class="text-right link-layout">
+    <%= link_to 'ユーザー情報を編集', edit_user_registration_path(current_user.id), class: 'btn btn-primary' %>
+  </div>
+
+  <div class="lesson-count">
+    <h2>学習したレッスン数</h2>
+    <p class="number"><%= Log.where(user_id: current_user.id).count %></p>
+  </div>
+  <div class="lesson-count">
+    <h2>マイレッスンに登録したレッスン数</h2>
+    <p  class="number"><%= Mylesson.where(user_id: current_user.id).count %></p>
+  </div>
+<% end %>

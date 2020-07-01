@@ -36,4 +36,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
+  def posts
+    return Lesson.where(user_id: self.id)
+  end
 end
